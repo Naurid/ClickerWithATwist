@@ -37,7 +37,7 @@ namespace ButtonFeature.Runtime
             for (int i = 0; i < number; i++)
             {
                 GameObject prefab =
-                    _references._wrongButtonPrefabs[Random.Range(0, _references._wrongButtonPrefabs.Length - 1)];
+                    _references._wrongButtonPrefabs[Random.Range(0, _references._wrongButtonPrefabs.Length)];
                 Move(Instantiate(prefab, Vector3.forward, Quaternion.identity, _references._canvasParent).GetComponent<RectTransform>());
             }
         }

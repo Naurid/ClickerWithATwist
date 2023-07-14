@@ -16,36 +16,16 @@ namespace HUDFeature.Runtime
 
         private void Start()
         {
-            SetRandomImage();
-            SetRandomText();
-            
             _basePos = transform.position;
             _baseRot = transform.rotation;
-        }
-
-        private void OnGUI()
-        {
-            if (GUILayout.Button("DoShake")) Animation();
         }
 
         #endregion
 
         
         #region Main Methods
-
-        private void SetRandomText()
-        {
-            int randText = Random.Range(0, _wrongTexts.Count);
-            _buttonText.text = _wrongTexts[randText];
-        }
-
-        private void SetRandomImage()
-        {
-            int randImage = Random.Range(0, _wrongSprites.Count);
-            _buttonObject.image.sprite = _wrongSprites[randImage];
-        }
         
-        private void Animation()
+        public void Animation()
         {
             _sequence?.Kill();
             
@@ -53,8 +33,8 @@ namespace HUDFeature.Runtime
             transform.rotation = _baseRot;
 
             _sequence = DOTween.Sequence();
-            _sequence.Append(transform.DOShakeRotation(1f, 10f));
-            _sequence.Insert(0, transform.DOShakePosition(1f, 10f));
+            _sequence.Append(transform.DOShakeRotation(_shakeDuration, _shakeStrength));
+            _sequence.Insert(0, transform.DOShakePosition(_shakeDuration, _shakeStrength));
         }
         
         #endregion
@@ -66,10 +46,8 @@ namespace HUDFeature.Runtime
         private Vector3 _basePos;
         private Quaternion _baseRot;
 
-        [SerializeField] private Button _buttonObject;
-        [SerializeField] private TMP_Text _buttonText;
-        [SerializeField] private List<Sprite> _wrongSprites;
-        [SerializeField] private List<string> _wrongTexts;
+        [SerializeField] private float _shakeDuration;
+        [SerializeField] private float _shakeStrength;
 
         #endregion
     }

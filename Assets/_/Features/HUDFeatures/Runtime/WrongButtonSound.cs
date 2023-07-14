@@ -14,14 +14,6 @@ namespace HUDFeature.Runtime
 
         #region Main Methods
 
-        private void OnGUI()
-        {
-            if (GUILayout.Button("Play Some Random Sound"))
-            {
-                PlayRandomSound();
-            }
-        }
-
         public void PlayRandomSound()
         {
             int randSound = Random.Range(0, _audioClips.Count);
