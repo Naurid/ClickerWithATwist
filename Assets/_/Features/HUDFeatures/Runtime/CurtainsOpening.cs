@@ -28,8 +28,8 @@ namespace HUDFeature.Runtime
 
         private void OpenCurtains()
         {
-            _leftCurtain.DOMove()
-            _rightCurtain.DOMove()
+            _leftCurtain.DOMove(_leftAnchor.position);
+            _rightCurtain.DOMove(_rightAnchor.position);
         }
 
         #endregion
@@ -38,6 +38,8 @@ namespace HUDFeature.Runtime
 
         [SerializeField] private Transform _leftCurtain;
         [SerializeField] private Transform _rightCurtain;
+
+        [SerializeField] private float _curtainOpeningSpeed;
 
         [SerializeField] private Transform _leftAnchor;
         [SerializeField] private Transform _rightAnchor;
