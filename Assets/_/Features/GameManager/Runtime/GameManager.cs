@@ -18,6 +18,12 @@ namespace GameManagerFeature.Runtime
         
         public event Action<OnNumberOfClickChangeArgs> m_onNumberOfClickChanged;
 
+        public bool CanQuit
+        {
+            get => _canQuit;
+            set => _canQuit = value;
+        }
+
         private void Awake()
         {
             if (m_instance == null)
@@ -36,6 +42,15 @@ namespace GameManagerFeature.Runtime
             m_onStart?.Invoke();
         }
 
+        private void OnApplicationQuit()
+        {
+            if(!CanQuit) Application.CancelQuit();
+            else
+            {
+                print("JustQuit");
+            }
+        }
+
         public bool CheckNumberOfClick(int value = 1)
         {
             _numberOfClick += value;
@@ -52,5 +67,6 @@ namespace GameManagerFeature.Runtime
 
         [SerializeField] private int _numberOfClickGoal;
         private int _numberOfClick;
+        private bool _canQuit;
     }
 }
