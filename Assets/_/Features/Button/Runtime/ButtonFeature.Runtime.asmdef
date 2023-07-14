@@ -1,0 +1,14 @@
+{
+    "name": "ButtonFeature.Runtime",
+    "rootNamespace": "ButtonFeature.Runtime",
+    "references": ["GUID:12533520a5d5c6b419cf86ca1a8cf1c0"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
