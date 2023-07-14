@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Codice.Client.Commands.TransformerRule;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 namespace HUDFeature.Runtime
 {
@@ -18,6 +16,9 @@ namespace HUDFeature.Runtime
 
         private void Start()
         {
+            SetRandomImage();
+            SetRandomText();
+            
             _basePos = transform.position;
             _baseRot = transform.rotation;
         }
@@ -32,6 +33,18 @@ namespace HUDFeature.Runtime
         
         #region Main Methods
 
+        private void SetRandomText()
+        {
+            int randText = Random.Range(0, _wrongTexts.Count);
+            _buttonText.text = _wrongTexts[randText];
+        }
+
+        private void SetRandomImage()
+        {
+            int randImage = Random.Range(0, _wrongSprites.Count);
+            _buttonObject.image.sprite = _wrongSprites[randImage];
+        }
+        
         private void Animation()
         {
             _sequence?.Kill();
@@ -52,6 +65,11 @@ namespace HUDFeature.Runtime
         
         private Vector3 _basePos;
         private Quaternion _baseRot;
+
+        [SerializeField] private Button _buttonObject;
+        [SerializeField] private TMP_Text _buttonText;
+        [SerializeField] private List<Sprite> _wrongSprites;
+        [SerializeField] private List<string> _wrongTexts;
 
         #endregion
     }
