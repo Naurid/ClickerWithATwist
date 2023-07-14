@@ -8,8 +8,6 @@ namespace ButtonFeature.Runtime
     public class ButtonMovement : MonoBehaviour
     {
         public static ButtonMovement m_instance;
-        
-        public event Action m_onMove;
 
         private void Awake()
         {
@@ -34,7 +32,6 @@ namespace ButtonFeature.Runtime
                 return;
             }
             Move();
-            m_onMove?.Invoke();
         }
 
         private void Move()
